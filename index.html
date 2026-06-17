@@ -3,29 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Para ti 💕</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<title>100 Días · Pase de Boxes 🏁</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --rose: #c9536a;
-    --rose-light: #f7dde3;
-    --rose-dark: #8b2d40;
-    --cream: #fdf6f0;
-    --text: #2a1a1f;
-    --muted: #8a6b72;
+    --asphalt: #1c1f26;
+    --paper: #f6f1e7;
+    --card: #fffaf3;
+    --racing-red: #c8312f;
+    --pit-yellow: #f2b134;
+    --gulf-blue: #3f7ea6;
+    --ink: #232323;
+    --muted: #6b6256;
+    --line: #e4dac8;
+
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-letter: 'Cormorant Garamond', serif;
+    --font-mono: 'Space Mono', monospace;
+    --font-body: 'DM Sans', sans-serif;
   }
 
   body {
-    background: var(--cream);
-    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    font-family: var(--font-body);
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  /* Petals background */
-  .petals {
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+
+  /* Ambient speed streaks */
+  .streaks {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
@@ -34,238 +46,20 @@
     overflow: hidden;
   }
 
-  .petal {
+  .streak {
     position: absolute;
-    width: 10px;
-    height: 14px;
-    background: radial-gradient(ellipse at 30% 30%, #f4a7b9, #c9536a88);
-    border-radius: 50% 50% 50% 0;
-    animation: fall linear infinite;
+    height: 2px;
+    width: 130px;
+    background: linear-gradient(90deg, transparent, var(--pit-yellow), transparent);
     opacity: 0;
+    animation: speed linear infinite;
   }
 
-  @keyframes fall {
-    0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
-    10%  { opacity: 0.7; }
-    90%  { opacity: 0.4; }
-    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-  }
-
-  /* Main */
-  .wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 60px 24px 80px;
-  }
-
-  /* Header */
-  .header {
-    text-align: center;
-    margin-bottom: 64px;
-    animation: fadeUp 1s ease both;
-  }
-
-  .heart-icon {
-    display: inline-block;
-    width: 56px;
-    height: 56px;
-    margin-bottom: 20px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.12); }
-  }
-
-  .header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.2rem, 8vw, 3.4rem);
-    font-weight: 300;
-    color: var(--text);
-    letter-spacing: -0.01em;
-    line-height: 1.1;
-    margin-bottom: 8px;
-  }
-
-  .header h1 em {
-    color: var(--rose);
-    font-style: italic;
-  }
-
-  .header .subtitle {
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  /* Divider */
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin: 0 auto 48px;
-    max-width: 280px;
-    animation: fadeUp 1s 0.2s ease both;
-  }
-
-  .divider-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--rose-light), transparent);
-  }
-
-  .divider-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--rose);
-    opacity: 0.6;
-  }
-
-  /* Reasons grid */
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-align: center;
-    margin-bottom: 20px;
-    animation: fadeUp 1s 0.3s ease both;
-  }
-
-  .reasons-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 12px;
-    margin-bottom: 56px;
-  }
-
-  .reason-card {
-    background: white;
-    border: 1px solid var(--rose-light);
-    border-radius: 16px;
-    padding: 20px 18px;
-    animation: fadeUp 1s ease both;
-  }
-
-  .reason-card .number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 32px;
-    color: var(--rose-light);
-    line-height: 1;
-    margin-bottom: 6px;
-    display: block;
-  }
-
-  .reason-card .text {
-    font-size: 14px;
-    color: var(--text);
-    line-height: 1.5;
-  }
-
-  /* Letter */
-  .letter {
-    background: white;
-    border: 1px solid var(--rose-light);
-    border-radius: 20px;
-    padding: 40px 36px;
-    margin-bottom: 48px;
-    animation: fadeUp 1s 0.5s ease both;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .letter::before {
-    content: '\201C';
-    position: absolute;
-    top: 12px; left: 20px;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 80px;
-    color: var(--rose-light);
-    line-height: 1;
-    pointer-events: none;
-  }
-
-  .letter p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    line-height: 1.85;
-    color: var(--text);
-    font-weight: 300;
-    position: relative;
-    z-index: 1;
-  }
-
-  .letter .firma {
-    margin-top: 24px;
-    text-align: right;
-    font-style: italic;
-    color: var(--rose);
-    font-size: 1.1rem;
-  }
-
-  /* Countdown */
-  .countdown-section {
-    text-align: center;
-    margin-bottom: 56px;
-    animation: fadeUp 1s 0.6s ease both;
-  }
-
-  .countdown-boxes {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 20px;
-  }
-
-  .countdown-box {
-    background: white;
-    border: 1px solid var(--rose-light);
-    border-radius: 14px;
-    padding: 16px 20px;
-    min-width: 72px;
-  }
-
-  .countdown-box .num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.4rem;
-    font-weight: 300;
-    color: var(--rose);
-    display: block;
-    line-height: 1;
-  }
-
-  .countdown-box .unit {
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: block;
-    margin-top: 4px;
-  }
-
-  /* Footer */
-  .footer {
-    text-align: center;
-    animation: fadeUp 1s 0.8s ease both;
-  }
-
-  .footer .big-heart {
-    display: block;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.5rem;
-    color: var(--rose);
-    margin-bottom: 8px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  .footer p {
-    font-size: 13px;
-    color: var(--muted);
-    font-style: italic;
+  @keyframes speed {
+    0%   { transform: translateX(-150px); opacity: 0; }
+    8%   { opacity: 0.45; }
+    92%  { opacity: 0.25; }
+    100% { transform: translateX(110vw); opacity: 0; }
   }
 
   @keyframes fadeUp {
@@ -273,115 +67,415 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* Stagger reasons */
-  .reason-card:nth-child(1) { animation-delay: 0.35s; }
-  .reason-card:nth-child(2) { animation-delay: 0.45s; }
-  .reason-card:nth-child(3) { animation-delay: 0.55s; }
-  .reason-card:nth-child(4) { animation-delay: 0.65s; }
-  .reason-card:nth-child(5) { animation-delay: 0.75s; }
-  .reason-card:nth-child(6) { animation-delay: 0.85s; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  /* ===== Pit pass header (full bleed) ===== */
+  .pitpass-header {
+    position: relative;
+    z-index: 1;
+    background: var(--asphalt);
+    color: var(--paper);
+    text-align: center;
+    padding: 44px 24px 0;
+    overflow: hidden;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .pitpass-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: repeating-linear-gradient(45deg,
+      var(--racing-red) 0 10px, var(--pit-yellow) 10px 20px);
+  }
+
+  .eyebrow-mono {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pit-yellow);
+  }
+
+  .race-badge {
+    width: 92px; height: 92px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 4px solid var(--paper);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(-6deg);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.25);
+    margin: 18px auto 18px;
+  }
+
+  .race-badge .num {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--racing-red);
+    line-height: 1;
+  }
+
+  .race-badge .cap {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .pitpass-header h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 9vw, 4rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+    margin: 6px 0 10px;
+  }
+
+  .pitpass-header h1 em {
+    color: var(--pit-yellow);
+    font-style: normal;
+  }
+
+  .pitpass-header .subtitle {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.65;
+    margin-bottom: 30px;
+  }
+
+  /* Perforation transitions (ticket-stub holes) */
+  .perforation, .perforation--card {
+    position: relative;
+    z-index: 1;
+    height: 16px;
+    background-color: var(--asphalt);
+    background-size: 22px 22px;
+    background-position: 11px 8px;
+    background-repeat: repeat-x;
+  }
+  .perforation       { background-image: radial-gradient(circle 5px, var(--paper) 99%, transparent 100%); }
+  .perforation--card { background-image: radial-gradient(circle 5px, var(--card)  99%, transparent 100%); }
+
+  /* ===== Main wrapper ===== */
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  /* Timing sheet (reasons) */
+  .timingsheet { margin-bottom: 52px; }
+
+  .timingsheet .eyebrow-mono {
+    color: var(--gulf-blue);
+    text-align: center;
+    display: block;
+    margin-bottom: 8px;
+    animation: fadeUp 1s 0.25s ease both;
+  }
+
+  .timingsheet h2 {
+    font-family: var(--font-letter);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.55rem;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 26px;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .lap-row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 14px 6px;
+    border-bottom: 1px dashed var(--line);
+    animation: fadeUp 1s ease both;
+  }
+  .lap-row:last-child { border-bottom: none; }
+
+  .lap-row:nth-child(3)  { animation-delay: 0.35s; }
+  .lap-row:nth-child(4)  { animation-delay: 0.42s; }
+  .lap-row:nth-child(5)  { animation-delay: 0.49s; }
+  .lap-row:nth-child(6)  { animation-delay: 0.56s; }
+  .lap-row:nth-child(7)  { animation-delay: 0.63s; }
+  .lap-row:nth-child(8)  { animation-delay: 0.70s; }
+
+  .lap-code {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--asphalt);
+    background: var(--pit-yellow);
+    padding: 3px 7px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .lap-time {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--muted);
+    min-width: 60px;
+    flex-shrink: 0;
+  }
+
+  .lap-text {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+
+  /* Ticket-style letter */
+  .ticket-letter {
+    background: var(--card);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 52px;
+    box-shadow: 0 18px 40px -28px rgba(28,31,38,0.35);
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  .ticket-letter .stub {
+    background: var(--asphalt);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .ticket-letter .stub span {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pit-yellow);
+  }
+
+  .letter-body { padding: 30px 32px 34px; }
+
+  .letter-body p {
+    font-family: var(--font-letter);
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .letter-body .firma {
+    margin-top: 22px;
+    text-align: right;
+    font-family: var(--font-letter);
+    font-style: italic;
+    color: var(--racing-red);
+    font-size: 1.05rem;
+  }
+
+  /* Timer (countdown) */
+  .timer-section {
+    text-align: center;
+    margin-bottom: 52px;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  .timer-section .eyebrow-mono { color: var(--gulf-blue); }
+
+  .timer-section h2 {
+    font-family: var(--font-letter);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin: 6px 0 18px;
+  }
+
+  .timer-boxes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .timer-box {
+    background: var(--asphalt);
+    border-radius: 8px;
+    padding: 16px 16px;
+    min-width: 72px;
+    box-shadow: inset 0 0 0 1px rgba(242,177,52,0.18);
+  }
+
+  .timer-box .num {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.9rem;
+    color: var(--pit-yellow);
+    text-shadow: 0 0 14px rgba(242,177,52,0.45);
+    display: block;
+    line-height: 1;
+  }
+
+  .timer-box .unit {
+    font-family: var(--font-mono);
+    font-size: 8.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.6;
+    display: block;
+    margin-top: 6px;
+  }
+
+  /* Finish line footer */
+  .finish-footer {
+    text-align: center;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+
+  .checker-strip {
+    height: 18px;
+    border-radius: 3px;
+    margin-bottom: 26px;
+    background-image:
+      linear-gradient(45deg, var(--asphalt) 25%, transparent 25%, transparent 75%, var(--asphalt) 75%),
+      linear-gradient(45deg, var(--asphalt) 25%, transparent 25%, transparent 75%, var(--asphalt) 75%);
+    background-size: 18px 18px;
+    background-position: 0 0, 9px 9px;
+    background-color: var(--paper);
+  }
+
+  .finish-footer .flag-heart {
+    display: block;
+    font-size: 2.3rem;
+    margin-bottom: 10px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .finish-footer p.closing {
+    font-family: var(--font-letter);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink);
+  }
 </style>
 </head>
 <body>
 
-<!-- Floating petals -->
-<div class="petals" id="petals"></div>
+<!-- Ambient speed streaks -->
+<div class="streaks" id="streaks"></div>
+
+<!-- Pit pass header -->
+<header class="pitpass-header">
+  <span class="eyebrow-mono">Acceso VIP</span>
+  <div class="race-badge">
+    <span class="num">100</span>
+    <span class="cap">días en pista</span>
+  </div>
+  <h1>Para <em>Jessica</em></h1>
+  <p class="subtitle">Con todo mi amor</p>
+</header>
+<div class="perforation"></div>
 
 <div class="wrapper">
 
-  <!-- Header -->
-  <header class="header">
-    <svg class="heart-icon" viewBox="0 0 56 56" fill="none">
-      <path d="M28 48s-22-13.5-22-26A12 12 0 0 1 28 14a12 12 0 0 1 22 8c0 12.5-22 26-22 26z" fill="#c9536a" opacity="0.15"/>
-      <path d="M28 46s-20-12.5-20-24A11 11 0 0 1 28 13a11 11 0 0 1 20 9c0 11.5-20 24-20 24z" fill="none" stroke="#c9536a" stroke-width="1.5"/>
-      <path d="M28 44s-18-11-18-22A10 10 0 0 1 28 13.5a10 10 0 0 1 18 8.5c0 11-18 22-18 22z" fill="#c9536a" opacity="0.6"/>
-    </svg>
-    <h1>Para <em>Jessica</em></h1>
-    <p class="subtitle">Con todo mi amor</p>
-  </header>
+  <!-- Hoja de tiempos / razones -->
+  <section class="timingsheet">
+    <span class="eyebrow-mono">Hoja de tiempos</span>
+    <h2>Razones por las que te quiero</h2>
 
-  <div class="divider">
-    <div class="divider-line"></div>
-    <div class="divider-dot"></div>
-    <div class="divider-line"></div>
-  </div>
+    <div class="lap-row"><span class="lap-code">L01</span><span class="lap-time">00:01.4</span><span class="lap-text">Contigo todo es mejor</span></div>
+    <div class="lap-row"><span class="lap-code">L02</span><span class="lap-time">00:03.8</span><span class="lap-text">Mi lugar favorito es contigo</span></div>
+    <div class="lap-row"><span class="lap-code">L03</span><span class="lap-time">00:07.2</span><span class="lap-text">Me das fuerza para enfrentar nuevos retos</span></div>
+    <div class="lap-row"><span class="lap-code">L04</span><span class="lap-time">00:12.6</span><span class="lap-text">Eres mi hoy y mi siempre</span></div>
+    <div class="lap-row"><span class="lap-code">L05</span><span class="lap-time">00:18.9</span><span class="lap-text">Tres meses de amor, risas y felicidad…</span></div>
+    <div class="lap-row"><span class="lap-code">L06</span><span class="lap-time">00:24.0</span><span class="lap-text">Hasta el infinito y más allá</span></div>
+  </section>
 
-  <!-- Razones -->
-  <p class="section-label">Razones por las que te quiero</p>
-  <!-- ✏️ CAMBIA LAS RAZONES AQUÍ -->
-  <div class="reasons-grid">
-    <div class="reason-card"><span class="number">01</span><span class="text">Haces que mis días sean más felices</span></div>
-    <div class="reason-card"><span class="number">02</span><span class="text">Contigo hasta lo simple se siente especial</span></div>
-    <div class="reason-card"><span class="number">03</span><span class="text">Me das fuerza para enfrentar nuevos retos</span></div>
-    <div class="reason-card"><span class="number">04</span><span class="text">Me inspiras a ser mejor cada día</span></div>
-    <div class="reason-card"><span class="number">05</span><span class="text">Amo nuestras locuras</span></div>
-    <div class="reason-card"><span class="number">06</span><span class="text">Dos meses llenos de momentos inolvidables</span></div>
-  </div>
-
-  <!-- Carta -->
-  <div class="letter">
-    <!-- ✏️ CAMBIA LA CARTA AQUÍ -->
-    <p>
-      Hay personas que llegan a tu vida y la cambian para siempre. Tú eres esa persona para mí.
-      Cada momento contigo se convierte en un recuerdo que quiero guardar.
-      No importa el día, no importa la hora — pensar en ti siempre me hace sonreír.
+  <!-- Carta estilo ticket -->
+  <div class="ticket-letter">
+    <div class="stub"><span>Boleto de carrera</span><span>N° 100</span></div>
+    <div class="perforation--card"></div>
+    <div class="letter-body">
+      <p>
+      Hoy se cumplen 100 días. 
+      Cada día contigo ha sido una razón más para sonreír, para creer en esto, para querer seguir 
+      construyendo algo bonito a tu lado. Gracias por elegirme, por tu paciencia, por tus abrazos 
+      y por hacer que lo simple se sienta extraordinario. Que sean los primeros de muchísimos más. Te Adoro.
       <br><br>
-      Gracias por ser exactamente como eres. Por tu risa, por tu locura, por todo lo que
-      compartes conmigo. Eres extraordinaria, y quiero que lo sepas.
-    </p>
-    <!-- ✏️ CAMBIA LA FIRMA AQUÍ -->
-    <p class="firma">— Con amor, Iván Camilo 🌹</p>
+        Gracias por ser exactamente como eres. Por tu risa, por tu locura, por cada
+        camino que hemos recorrido juntos, empezando por esos dos viajes que nunca
+        olvidaré. Eres extraordinaria, y quiero que lo sepas.
+      </p>
+      <!-- ✏️ CAMBIA LA FIRMA AQUÍ -->
+      <p class="firma">— Con amor, tu piloto favorito, Iván Camilo 🏁</p>
+    </div>
   </div>
 
-  <!-- Cuenta regresiva -->
-  <div class="countdown-section">
-    <p class="section-label">Tiempo juntos desde</p>
-    <!-- ✏️ CAMBIA LA FECHA DE ANIVERSARIO AQUÍ (formato: AAAA, MM-1, DD) -->
-    <div class="countdown-boxes" id="counter"></div>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <span class="big-heart">♥</span>
-    <!-- ✏️ CAMBIA EL MENSAJE FINAL -->
-    <p>Eres mi pole position en la vida.</p>
+  <!-- Cronómetro -->
+  <div class="timer-section">
+    <span class="eyebrow-mono">Cronómetro de la carrera</span>
+    <h2>Tiempo juntos desde la largada</h2>
+    <!-- ✏️ CAMBIA LA FECHA DE ANIVERSARIO EN EL SCRIPT -->
+    <div class="timer-boxes" id="counter"></div>
   </div>
 
 </div>
 
+<!-- Línea de meta -->
+<footer class="finish-footer">
+  <div class="checker-strip"></div>
+  <span class="flag-heart">🏁</span>
+  <!-- ✏️ CAMBIA EL MENSAJE FINAL -->
+  <p class="closing">Eres mi pastelito de chocolate.</p>
+</footer>
+
 <script>
-  // Pétalos animados
-  const petalsEl = document.getElementById('petals');
-  for (let i = 0; i < 18; i++) {
-    const p = document.createElement('div');
-    p.className = 'petal';
-    const size = 8 + Math.random() * 8;
-    p.style.cssText = `
-      width:${size}px; height:${size*1.4}px;
-      left:${Math.random()*100}%;
-      animation-duration:${6+Math.random()*8}s;
-      animation-delay:${-Math.random()*10}s;
-      transform: rotate(${Math.random()*360}deg);
+  // Streaks de velocidad ambientales
+  const streaksEl = document.getElementById('streaks');
+  for (let i = 0; i < 10; i++) {
+    const s = document.createElement('div');
+    s.className = 'streak';
+    s.style.cssText = `
+      top:${Math.random()*100}%;
+      animation-duration:${4+Math.random()*5}s;
+      animation-delay:${-Math.random()*8}s;
     `;
-    petalsEl.appendChild(p);
+    streaksEl.appendChild(s);
   }
 
   // Cuenta regresiva desde fecha de aniversario
-  // (año, mes-1, día)
-  const since = new Date(2026, 2, 8, 18, 01, 0); // 8 de marzo de 2026 a las 3:30 PM
+  // (año, mes-1, día, hora, min, seg)
+  const since = new Date(2026, 2, 8, 18, 1, 0); // 8 de marzo de 2026 a las 6:01 PM
 
   function updateCounter() {
     const now = new Date();
     let diff = now - since;
     if (diff < 0) diff = 0;
 
-    const days   = Math.floor(diff / (1000*60*60*24));
-    const hours  = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-    const mins   = Math.floor((diff % (1000*60*60)) / (1000*60));
-    const secs   = Math.floor((diff % (1000*60)) / 1000);
+    const days  = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const secs  = Math.floor((diff % (1000*60)) / 1000);
 
     const box = (n, label) =>
-      `<div class="countdown-box"><span class="num">${n}</span><span class="unit">${label}</span></div>`;
+      `<div class="timer-box"><span class="num">${n}</span><span class="unit">${label}</span></div>`;
 
     document.getElementById('counter').innerHTML =
       box(days,'días') + box(hours,'horas') + box(mins,'min') + box(secs,'seg');
