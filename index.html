@@ -343,6 +343,99 @@
     margin-top: 6px;
   }
 
+  /* Birthday / checkered flag section */
+  .birthday-section {
+    text-align: center;
+    margin-bottom: 52px;
+    animation: fadeUp 1s 0.7s ease both;
+  }
+
+  .birthday-section .eyebrow-mono { color: var(--racing-red); }
+
+  .birthday-badge {
+    width: 132px; height: 132px;
+    border-radius: 50%;
+    margin: 18px auto 20px;
+    background: var(--asphalt);
+    border: 4px solid var(--pit-yellow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.2), inset 0 0 0 1px rgba(242,177,52,0.25);
+    position: relative;
+  }
+
+  .birthday-badge::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background-image:
+      linear-gradient(45deg, var(--paper) 25%, transparent 25%, transparent 75%, var(--paper) 75%),
+      linear-gradient(45deg, var(--paper) 25%, transparent 25%, transparent 75%, var(--paper) 75%);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+    z-index: -1;
+  }
+
+  .birthday-badge .num {
+    font-family: var(--font-display);
+    font-size: 3.4rem;
+    color: var(--pit-yellow);
+    line-height: 1;
+    text-shadow: 0 0 16px rgba(242,177,52,0.45);
+  }
+
+  .birthday-badge .cap {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: var(--paper);
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-top: 4px;
+  }
+
+  .birthday-section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 6vw, 2.6rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+
+  .birthday-section p.msg {
+    font-family: var(--font-letter);
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.75;
+    color: var(--ink);
+    max-width: 480px;
+    margin: 0 auto 18px;
+  }
+
+  .to-be-continued {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--racing-red);
+    border-top: 1px dashed var(--line);
+    border-bottom: 1px dashed var(--line);
+    padding: 10px 18px;
+  }
+
+  .to-be-continued::before,
+  .to-be-continued::after {
+    content: '🏁';
+    font-size: 14px;
+  }
+
   /* Finish line footer */
   .finish-footer {
     text-align: center;
@@ -394,6 +487,20 @@
 <div class="perforation"></div>
 
 <div class="wrapper">
+
+  <!-- Cumpleaños #29 -->
+  <!-- ✏️ CAMBIA EL MENSAJE DE CUMPLEAÑOS AQUÍ -->
+  <section class="birthday-section">
+    <span class="eyebrow-mono">Vuelta de honor</span>
+    <div class="birthday-badge">
+      <span class="num">29</span>
+      <span class="cap">feliz cumpleaños</span>
+    </div>
+    <img src="invitacion.jpeg" alt="Nosotros" style="width:100%; border-radius:10px; margin-bottom:20px;">
+    <span class="to-be-continued">Esta historia continuará</span>
+  </section>
+
+   <div class="checker-strip" style="margin-bottom: 40px;"></div>
 
   <!-- Hoja de tiempos / razones -->
   <section class="timingsheet">
